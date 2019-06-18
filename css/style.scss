@@ -1,0 +1,261 @@
+@mixin flexCenter($direction, $alignitems) {
+    display: flex;
+    // justify-content: center;
+    align-items: $alignitems;
+    flex-direction: $direction;
+}
+@mixin button ($buttonWidth, $buttoncolor, $buttonpadding){
+    width: $buttonWidth;
+    background-color: $buttoncolor;
+    padding: $buttonpadding;
+    border-radius: 50px;
+    font-size: 20px;
+    line-height: 1.5;
+    border:none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+} 
+
+body {
+    background-image: url('../image/back.png');
+    background-color: #cccccc;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    .main_div{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.842);
+        width: 100%;
+        height: 100vh; 
+        overflow-y: scroll;
+    }
+}
+
+
+
+.main_colums{
+    .colum{
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; 
+        }
+        height:100vh;
+        // min-height: 100%;
+        @include flexCenter(column, center);
+        .text{
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 0px 70px;
+        }
+    }
+    .left{
+        @include flexCenter(column, center);
+        .logo_place{
+            width: 100%;
+            img{
+                width: auto;
+                height: 50px;
+                margin-bottom: 50px;
+            }
+        }
+        .carousel{
+            width: 50%;
+        }
+        button{
+            @include button(80%, rgba(156, 206, 253, 0.356), 6px);
+        }
+    }
+    .right{
+        background-color: rgba(255, 255, 255, 0.288);
+        padding-top: 100px;
+        form{
+            width: 80%;
+            color: #fff;
+            input{
+                border-radius: 50px;
+                padding: .375rem 1.75rem;
+            }
+            button{
+                @include button(100%, #43107f, 12px);
+            }
+            .facebook_login{
+                @include button(100%, #3b5998, 5px);
+                span{
+                    color:white;
+                    font-size: 30px;
+                    margin-right: 15px;
+                }
+            }
+            .google_login{
+                @include button(100%, #ffffff, 5px);
+                color: #747474;
+                img{
+                    width: 50px;
+                }
+            }
+            .odnoklassnik_login{
+                @include button(100%, #d2742c, 5px);
+                span{
+                    color:white;
+                    font-size: 30px;
+                    margin-right: 15px;
+                }
+            }
+            .input-group-text{
+                border-radius: 1.25rem 0.25rem 0.25rem 1.25rem;
+            }
+            .select_group{
+                display: flex;
+            }
+            select{
+                width: 30%;
+                border-radius: 50px 0px 0px 50px;
+            }
+            .select_input{
+                width: 70%;
+                border-radius: 0px 50px 50px 0px;
+            }
+            .radio {
+                input {
+                    position: absolute;
+                    pointer-events: none;
+                    visibility: hidden;
+                    &:focus + label {
+                        background: #eeeeff;
+                      }
+                    &:focus + label .checker {
+                        border-color: #6666ff;
+                      }
+                    &:checked + label .checker {
+                        box-shadow: inset 0 0 0 6px #6666ff;
+                      }    
+                  }
+                label {
+                    display: flex;
+                    align-items: center;
+                    height: 28px;
+                    border-radius: 14px;
+                    margin: 10px 0px;
+                    padding: 0 8px 0 6px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    &:hover {
+                        background: #eeeeff85;
+                        }
+                    &:hover .checker {
+                        box-shadow: inset 0 0 0 2px #6666ff;
+                        }
+                }
+                .checker {
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    margin-right: 8px;
+                    box-shadow: inset 0 0 0 2px #ccc;
+                    transition: box-shadow 0.3s ease;
+                }
+            }
+        }
+    }
+}
+
+.success{
+    @include flexCenter(column, center);
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    div{
+        font-size: 100px;
+        font-weight: 900;
+        color: greenyellow;
+    }
+    p{
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    }      
+    button{
+        @include button(300px, #43107f, 12px);
+    }
+    .footer_offers{
+        margin-top:100px; 
+        width: 50%;
+        @include flexCenter(flex, center);
+        justify-content: space-between;
+        div{
+            width: 30%;
+            height: 80px;
+            background-color: #d2742c;
+        }
+    }
+}
+
+
+
+
+.loaderi{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.loaderi div{
+	background: whitesmoke;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	float: left;
+	top: 40px;
+	position: relative;
+	margin-left: 10px;
+}
+
+.loaderi div:nth-child(1),.loaderi div:nth-child(3),.loaderi div:nth-child(5){
+	animation: animateone 1s linear infinite;
+	top: 40px;
+}
+
+.loaderi div:nth-child(2),.loaderi div:nth-child(4){
+	animation: animatetwo 1s linear infinite;
+	top: -40px;
+}
+
+@keyframes animateone{
+	0%{
+		top:40px;
+		transform:scale(1);
+	}
+	50%{
+		top:-40px;
+		transform:scale(0.5);
+	}
+}
+
+@keyframes animatetwo{
+	0%,100%{
+		top:-40px;
+		transform:scale(0.5);
+	}
+	50%{
+		top:40px;
+		transform:scale(1);
+	}
+}
+
+
+@media only screen and (max-width: 600px) {
+    .main_colums{
+        .colum{
+            overflow-y: hidden ;
+            height: 100%;
+            .text{
+                padding: 0px 20px;
+            }
+        }
+    }
+}
