@@ -15,7 +15,7 @@ function validateEmail(email) {
         errors.push("Manufacturer");
       } else if (form[i].name == "Model" && form[i].value.length < 3) {
         errors.push("Model");
-      } else if (form[i].name == "Time" && form[i].value.length != 10) {
+      } else if (form[i].name == "Time" && form[i].value.length != 4) {
         errors.push("Time");
       } else if ( form[i].name == "Phone" && (form[i].value.length < 7 || parseInt(form[i].value) < 1 || form[i].value.length > 9 )) {
         errors.push("Phone");
